@@ -1,25 +1,26 @@
-import alphabet
+alphabet = ['a', 'b', 'c', 'd', 'e', 'f', 'g', 'h', 'i', 'j', 'k', 'l', 'm', 'n', 'o', 'p', 'q', 'r', 's', 't', 'u', 'v', 'w', 'x', 'y', 'z']
 
-def encrypt(input_text,shift_amount):
-    encoded_text = ""
-    for character in input_text:
-        position = alphabet.alphabet_list.index(character) 
+alphabet_length = len(alphabet)
+def caesar(input_text, shift_amount, chyper_direction):
 
-        new_position = position + shift_amount
+    output_text = ""
 
-        encoded_text += alphabet.alphabet_list[new_position]
+    if chyper_direction == "decode":
+        shift_amount *= -1
     
-    print("The encoded text is " + encoded_text)
-
-def decrypt (input_text,shift_amount):
-    plain_text = ""
 
     for character in input_text:
-        position = alphabet.alphabet_list.index(character) 
+        if character not in alphabet:
+            output_text += character
+        else:
+            position = alphabet.index(character)
 
-        new_position = position - shift_amount
-
-        plain_text += alphabet.alphabet_list[new_position]
-
-    print("The decoded text is " + plain_text)
-
+            new_position = position + shift_amount
+            
+            if (new_position >= alphabet_length) or (new_position <0 ):
+                new_position %= alphabet_length
+                
+            output_text += alphabet[new_position]
+        
+    print(f"Here's the {chyper_direction}d result: {output_text}\n")
+   
