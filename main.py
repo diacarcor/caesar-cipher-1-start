@@ -15,7 +15,7 @@ while (is_continue):
     else:
         caesar_chiper.caesar (input_text = text,shift_amount = shift, chyper_direction = direction)
 
-    want_to_continue = input("Type 'yes' if you want to go again. Otherwise type 'no'.\n")
+    want_to_continue = input("Type 'yes' if you want to go again. Otherwise type 'no'.\n").lower()
 
     if want_to_continue == "no":
         is_continue = False
